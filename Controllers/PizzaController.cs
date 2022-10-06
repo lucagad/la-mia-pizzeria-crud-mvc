@@ -61,5 +61,22 @@ public class PizzaController : Controller
             return RedirectToAction("Index");
         }
     }
+
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Delete(int id)
+    {
+        using (PizzaContext context = new PizzaContext())
+        {
+            Pizza pizza = context.Pizzas.Where(Pizza => Pizza.PizzaId == id).FirstOrDefault();
+            if (pizza == null)
+            {
+               return NotFound("Non trovato");
+            }
+            context.Pizzas.Remove(pizza);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }   
+    }
 }
-    

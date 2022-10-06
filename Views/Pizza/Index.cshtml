@@ -36,9 +36,19 @@
                           <td>@pizza.Name</td>
                           <td>@pizza.Price €</td>
                           <td>
-                              <a class="btn btn_custom_info" href="@Url.Action("Show", "Pizza", new { id= @pizza.PizzaId })"><i class="fas fa-info-circle"></i></a>
-                              <a class="btn btn_custom_edit" href="#"><i class="fas fa-edit"></i></a>
-                              <a class="btn btn-danger" href="#"><i class="fas fa-trash"></i></a>
+                              <div class="d-flex justify-content-center align-items-center">
+                                  
+                                  <a class="btn btn_custom_info" href="@Url.Action("Show", "Pizza", new { id = @pizza.PizzaId })"><i class="fas fa-info-circle"></i></a>
+                                  <a class="btn btn_custom_edit" href="#"><i class="fas fa-edit"></i></a>
+                                  <form asp-controller="Pizza" asp-action="Delete" asp-route-id="@pizza.PizzaId" method="post">
+                                      @Html.AntiForgeryToken()
+                                      <button type="submit" class="btn btn-danger">
+                                          <i class="fas fa-trash"></i>
+                                      </button>
+                                  </form>
+                                  
+                              </div>
+                              
                           </td>
 
                       </tr>
