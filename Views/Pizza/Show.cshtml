@@ -11,7 +11,7 @@
                 @* Singola scheda *@
                 <div class="card w-100">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <span class="font-weight-bold"> Informazioni aggiuntive della Pizza selezionata</span>
+                        <span class="font-weight-bold">Informazioni aggiuntive della Pizza selezionata</span>
                         <a class="btn btn_custom_secondary" asp-area="" asp-controller="Pizza" asp-action="Index">Torna all'elenco</a>
                     </div>
 
@@ -24,7 +24,7 @@
                             <p class="card-text"><strong>Prezzo: </strong>@Model.Price &euro;</p>
                            
                             <div class="button_container d-flex justify-content-end align-items-center">
-                                <a class="mx-3 btn btn_custom_edit" href="#">Modifica <i class="fas fa-edit"></i></a>
+                                <a class="mx-3 btn btn_custom_edit" href="@Url.Action("Update", "Pizza", new { id = @Model.PizzaId })">Modifica <i class="fas fa-edit"></i></a>
                                 <button class="btn btn_custom_delete">Elimina <i class="far fa-trash-alt"></i></button>
                             </div>
 

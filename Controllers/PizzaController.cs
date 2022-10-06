@@ -53,8 +53,16 @@ public class PizzaController : Controller
             Pizza pizzaToCreate = new Pizza();
             pizzaToCreate.Name = formData.Name;
             pizzaToCreate.Description = formData.Description;
-            pizzaToCreate.ImgUrl = formData.ImgUrl;
+            if (formData.ImgUrl != null)
+            {
+                pizzaToCreate.ImgUrl = formData.ImgUrl;
+            }
+            else
+            {
+                pizzaToCreate.ImgUrl="/img/placeholder.jpg";
+            }
             pizzaToCreate.Price = formData.Price;
+            
             context.Pizzas.Add(pizzaToCreate);
             context.SaveChanges();
 
@@ -62,6 +70,34 @@ public class PizzaController : Controller
         }
     }
 
+    [HttpGet]
+    public IActionResult Update(int id)
+    {
+        using (PizzaContext context = new PizzaContext())
+        {
+            Pizza pizzaSelected = context.Pizzas.Where(Pizza => Pizza.PizzaId == id).FirstOrDefault();
+            if (pizzaSelected == null)
+            {
+                return NotFound("Pizza non trovata");
+            }
+            return View (pizzaSelected);
+        }
+    }
+
+    [HttpPost]
+    public IActionResult Update(int id, Pizza formData)
+    {
+        using (PizzaContext context = new PizzaContext())
+        {
+            Pizza pizzaSelected = context.Pizzas.Where(pizza => pizza.PizzaId == id).FirstOrDefault();
+            pizzaSelected.Name = formData.Name;
+            pizzaSelected.Description = formData.Description;
+            pizzaSelected.ImgUrl = formData.ImgUrl;
+            pizzaSelected.Price = formData.Price;
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+    }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
