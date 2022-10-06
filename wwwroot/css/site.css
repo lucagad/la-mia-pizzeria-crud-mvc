@@ -1,0 +1,113 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+}
+
+
+/*
+// CUSTOM
+*/
+
+
+header {
+  height: 60px;
+}
+
+main {
+  height: calc(100vh - 60px - 60px);
+  overflow-y: auto;
+}
+
+footer {
+  height: 60px;
+}
+
+.card-custom{
+  width: 18rem;
+  height: 100%;
+  flex-shrink: 1;
+}
+
+.table-img-custom{
+  height: 50px;
+  width: 50px;
+}
+
+.show-img-custom{
+  height: 150px;
+  width: 150px;
+}
+
+
+/*
+// BOTTONI CRUD
+*/
+
+.btn_custom{
+  background-color: #00D7C7;
+  border-color:#00D7C7;
+  color: white;
+}
+
+.btn_custom:hover{
+   color: #4F126F;
+}
+
+.btn_custom_info,
+.btn_custom_edit,
+.btn_custom_delete{
+  margin: 2px;
+}
+
+.btn_custom_info {
+  background-color: #00D7C7;
+  border-color: #00D7C7;
+  color: white;
+}
+
+
+.btn_custom_info:hover{
+  background-color: whitesmoke;
+  border-color: #00D7C7;
+}
+
+.btn_custom_edit {
+  background-color: #FF9D22;
+  border-color: #FF9D22;
+  color: white;
+}
+
+.btn_custom_edit:hover{
+  background-color: whitesmoke;
+  border-color: #FF9D22;
+}
+
+.btn_custom_delete{
+  background-color: #e3332f;
+  border-color: #e3332f;
+  color: white;
+}
+
+.btn_custom_delete:hover{
+  background-color: whitesmoke;
+  border-color: #e3332f;
+}
+
+.btn_custom_secondary{
+  background-color: #4F126F;
+  border-color:#4F126F;
+  color: white;
+}
+
+.btn_custom_secondary:hover{
+   color: #00D7C7;
+}
