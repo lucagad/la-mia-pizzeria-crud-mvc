@@ -59,7 +59,7 @@ footer {
 }
 
 .btn_custom:hover{
-   color: #4F126F;
+  color: #4F126F;
 }
 
 .btn_custom_info,
@@ -109,5 +109,6 @@ footer {
 }
 
 .btn_custom_secondary:hover{
-   color: #00D7C7;
+  color: #00D7C7;
 }
+

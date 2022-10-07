@@ -24,6 +24,9 @@ public class Pizza
     [Required(ErrorMessage = "Il campo è obbligatorio")]
     [Range(0.01, 999.99, ErrorMessage = "Il prezzo deve essere compreso tra 0.01 ed 999.99")]
     public double Price { get; set; }
+    
+    public int? CategoryId { get; set; }
+    public Category? Category { get; set; }
 
     public Pizza()
     {

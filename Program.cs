@@ -28,7 +28,7 @@ app.MapControllerRoute(
 
 app.Run();
 
-defaultValue();
+//defaultValue();
 
 
 static void defaultValue()
