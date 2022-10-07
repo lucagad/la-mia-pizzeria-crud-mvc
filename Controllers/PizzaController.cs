@@ -1,7 +1,8 @@
-using la_mia_pizzeria_static.Models;
+using la_mia_pizzeria_post.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
-namespace la_mia_pizzeria_static.Controllers;
+namespace la_mia_pizzeria_post.Controllers;
 
 public class PizzaController : Controller
 {
@@ -11,7 +12,7 @@ public class PizzaController : Controller
 
         using (PizzaContext db = new PizzaContext())
         {
-            pizzes = db.Pizzas.ToList<Pizza>();
+            pizzes = db.Pizzas.Include("Category").ToList();
         }
 
         return View("Index", pizzes);
@@ -21,7 +22,7 @@ public class PizzaController : Controller
     {
         using (PizzaContext context = new PizzaContext())
         {
-            Pizza pizzaFound = context.Pizzas.Where(pizza => pizza.PizzaId == id).FirstOrDefault();
+            Pizza pizzaFound = context.Pizzas.Where(pizza => pizza.PizzaId == id).Include(pizza => pizza.Category).FirstOrDefault();
             if (pizzaFound == null)
             {
                 return NotFound($"La Pizza con id {id} non è stata trovata");
@@ -36,32 +37,42 @@ public class PizzaController : Controller
     [HttpGet]
     public IActionResult Create()
     {
-        return View("Create");
+        PizzasCategories pizzasCategories = new PizzasCategories();
+        
+        pizzasCategories.Categories = new PizzaContext().Categories.ToList();
+        return View("Create",pizzasCategories);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Create(Pizza formData)
+    public IActionResult Create(PizzasCategories formData)
     {
         if (!ModelState.IsValid)
         {
-            return View("Create", formData);
+            PizzasCategories pizzasCategories = new PizzasCategories();
+            pizzasCategories.Categories = new PizzaContext().Categories.ToList();
+            
+            return View("Create", pizzasCategories);
         }
 
         using (PizzaContext context = new PizzaContext())
         {
             Pizza pizzaToCreate = new Pizza();
-            pizzaToCreate.Name = formData.Name;
-            pizzaToCreate.Description = formData.Description;
-            if (formData.ImgUrl != null)
+            
+            pizzaToCreate.Name = formData.Pizza.Name;
+            pizzaToCreate.Description = formData.Pizza.Description;
+            
+            if (formData.Pizza.ImgUrl != null)
             {
-                pizzaToCreate.ImgUrl = formData.ImgUrl;
+                pizzaToCreate.ImgUrl = formData.Pizza.ImgUrl;
             }
             else
             {
                 pizzaToCreate.ImgUrl="/img/placeholder.jpg";
             }
-            pizzaToCreate.Price = formData.Price;
+            
+            pizzaToCreate.Price = formData.Pizza.Price;
+            pizzaToCreate.CategoryId = formData.Pizza.CategoryId;
             
             context.Pizzas.Add(pizzaToCreate);
             context.SaveChanges();
@@ -80,20 +91,27 @@ public class PizzaController : Controller
             {
                 return NotFound("Pizza non trovata");
             }
-            return View (pizzaSelected);
+            
+            PizzasCategories pizzasCategories = new PizzasCategories();
+            pizzasCategories.Pizza = pizzaSelected;
+            pizzasCategories.Categories = new PizzaContext().Categories.ToList();
+            
+            return View (pizzasCategories);
         }
     }
 
     [HttpPost]
-    public IActionResult Update(int id, Pizza formData)
+    public IActionResult Update(int id, PizzasCategories formData)
     {
         using (PizzaContext context = new PizzaContext())
         {
             Pizza pizzaSelected = context.Pizzas.Where(pizza => pizza.PizzaId == id).FirstOrDefault();
-            pizzaSelected.Name = formData.Name;
-            pizzaSelected.Description = formData.Description;
-            pizzaSelected.ImgUrl = formData.ImgUrl;
-            pizzaSelected.Price = formData.Price;
+            pizzaSelected.Name = formData.Pizza.Name;
+            pizzaSelected.Description = formData.Pizza.Description;
+            pizzaSelected.ImgUrl = formData.Pizza.ImgUrl;
+            pizzaSelected.Price = formData.Pizza.Price;
+            pizzaSelected.CategoryId = formData.Pizza.CategoryId;
+            context.Pizzas.Update(pizzaSelected);
             context.SaveChanges();
             return RedirectToAction("Index");
         }

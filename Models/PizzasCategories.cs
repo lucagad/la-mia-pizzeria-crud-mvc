@@ -1,4 +1,4 @@
-namespace la_mia_pizzeria_static.Models;
+namespace la_mia_pizzeria_post.Models;
 
 public class PizzasCategories
 {

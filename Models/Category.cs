@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using la_mia_pizzeria_post;
 
-namespace la_mia_pizzeria_static.Models;
+namespace la_mia_pizzeria_post.Models;
 
 [Table("category")]
 public class Category

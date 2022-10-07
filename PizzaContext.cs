@@ -1,4 +1,4 @@
-using la_mia_pizzeria_static.Models;
+using la_mia_pizzeria_post.Models;
 using Microsoft.EntityFrameworkCore;
 
 public class PizzaContext : DbContext

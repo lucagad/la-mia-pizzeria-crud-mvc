@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Crea - ";
 }
-@model Pizza;
+@model PizzasCategories;
 
 <div class="container">
     <div class="d-flex justify-content-center">
@@ -26,11 +26,10 @@
                                 <input type="text"
                                        value=""
                                        class="form-control"
-                                       asp-for="Name"
+                                       asp-for="Pizza.Name"
                                        id="name"
-                                       name="name"
                                        placeholder="Inserisci il nome del Prodotto">
-                                <span asp-validation-for="Name" class="text-danger"></span>
+                                <span asp-validation-for="Pizza.Name" class="text-danger"></span>
                             </div>
                         
                             @*{{-- Prezzo prodotto --}}*@
@@ -39,11 +38,10 @@
                                 <input type="text"
                                        value=""
                                        class="form-control"
-                                       asp-for="Price"
+                                       asp-for="Pizza.Price"
                                        id="price"
-                                       name="price"
                                        placeholder="Inserisci il Prezzo">
-                                <span asp-validation-for="Price" class="text-danger"></span>
+                                <span asp-validation-for="Pizza.Price" class="text-danger"></span>
                             </div>
                         
                             @*{{-- Descrizione prodotto --}}*@
@@ -52,11 +50,23 @@
                                 <textarea type="text"
                                             rows="6"
                                             class="form-control"
-                                            asp-for="Description"
+                                            asp-for="Pizza.Description"
                                             id="description"
-                                            name="description"
                                             placeholder="Inserisci la descrizione del Prodotto"></textarea>
-                                <span asp-validation-for="Description" class="text-danger"></span>
+                                <span asp-validation-for="Pizza.Description" class="text-danger"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="font-weight-bold" for="description">Categoria</label>
+                                <select asp-for="Pizza.CategoryId" rows="10" class="d-block w-100">
+                                                    
+                                    @foreach (Category category in Model.Categories)
+                                    {
+                                        <option value="@category.Id">@category.Name</option>
+                                    }
+                                </select>
+                                
+                                <span asp-validation-for="Pizza.CategoryId" class="text-danger"></span>
                             </div>
                                                     
                             @*{{-- Inserimento Immagini --}}*@
@@ -64,10 +74,9 @@
                                 <label class="font-weight-bold" for="item-image">Aggiungi l'immagine del prodotto</label>
                                 <input type="text" 
                                        class="form-control" 
-                                       asp-for="ImgUrl"
-                                       id="item-image" 
-                                       name="ImgUrl">
-                                <span asp-validation-for="ImgUrl" class="text-danger"></span>
+                                       asp-for="Pizza.ImgUrl"
+                                       id="item-image">
+                                <span asp-validation-for="Pizza.ImgUrl" class="text-danger"></span>
                             </div>
                         
                             @*{{-- Submit --}}*@

@@ -22,6 +22,7 @@
                             <h4 class="card-title">@Model.Name</h4>
                             <p class="card-text"><strong>Descrizione: </strong> @Model.Description</p>
                             <p class="card-text"><strong>Prezzo: </strong>@Model.Price &euro;</p>
+                            <p class="card-text"><strong>Categoria: </strong>@Model.Category?.Name</p>
                            
                             <div class="button_container d-flex justify-content-end align-items-center">
                                 <a class="mx-3 btn btn_custom_edit" href="@Url.Action("Update", "Pizza", new { id = @Model.PizzaId })">Modifica <i class="fas fa-edit"></i></a>

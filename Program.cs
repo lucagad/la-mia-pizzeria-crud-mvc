@@ -1,4 +1,4 @@
-using la_mia_pizzeria_static.Models;
+using la_mia_pizzeria_post.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
