@@ -89,7 +89,9 @@ public class PizzaController : Controller
     {
         using (PizzaContext context = new PizzaContext())
         {
-            Pizza pizzaSelected = context.Pizzas.Where(Pizza => Pizza.PizzaId == id).FirstOrDefault();
+            Pizza pizzaSelected = context.Pizzas.Include("Category").Include("Ingredients")
+                .Where(pizza => pizza.PizzaId == id).First();
+            
             if (pizzaSelected == null)
             {
                 return NotFound("Pizza non trovata");
@@ -98,7 +100,8 @@ public class PizzaController : Controller
             PizzasCategories pizzasCategories = new PizzasCategories();
             pizzasCategories.Pizza = pizzaSelected;
             pizzasCategories.Categories = new PizzaContext().Categories.ToList();
-            
+            pizzasCategories.Ingredients = new PizzaContext().Ingredients.ToList();
+
             return View (pizzasCategories);
         }
     }
@@ -109,12 +112,17 @@ public class PizzaController : Controller
         using (PizzaContext context = new PizzaContext())
         {
             Pizza pizzaSelected = context.Pizzas.Where(pizza => pizza.PizzaId == id).FirstOrDefault();
+            
             pizzaSelected.Name = formData.Pizza.Name;
             pizzaSelected.Description = formData.Pizza.Description;
             pizzaSelected.ImgUrl = formData.Pizza.ImgUrl;
             pizzaSelected.Price = formData.Pizza.Price;
             pizzaSelected.CategoryId = formData.Pizza.CategoryId;
+            
+            pizzaSelected.Ingredients = context.Ingredients.Where(ingredient => formData.SelectedIngredients.Contains(ingredient.Id)).ToList();
+            
             context.Pizzas.Update(pizzaSelected);
+          
             context.SaveChanges();
             return RedirectToAction("Index");
         }

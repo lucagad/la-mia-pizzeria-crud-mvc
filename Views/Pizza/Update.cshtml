@@ -73,6 +73,27 @@
                                             placeholder="Inserisci la descrizione del Prodotto"></textarea>
                                 <span asp-validation-for="Pizza.Description" class="text-danger"></span>
                             </div>
+                            
+                            <div class="mb-3">
+                                <label class="font-weight-bold">Ingredienti:</label>
+                                <select asp-for="SelectedIngredients" multiple="multiple" size="10" class="form-select">
+                                    @foreach (Ingredient ingredient in Model.Ingredients)
+                                    {
+                                        @if (Model.Pizza.Ingredients.Contains(ingredient))
+                                        {
+                                            <option value="@ingredient.Id" selected >@ingredient.Name</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@ingredient.Id">@ingredient.Name</option>
+                                        }
+                                           
+                                    }
+                                </select>
+                                <span asp-validation-for="SelectedIngredients" class="text-danger"></span>
+
+                                
+                            </div>
                                                     
                             @*{{-- Inserimento Immagini --}}*@
                             <div class="form-group">
