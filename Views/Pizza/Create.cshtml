@@ -68,6 +68,19 @@
                                 
                                 <span asp-validation-for="Pizza.CategoryId" class="text-danger"></span>
                             </div>
+                            
+                            <div class="form-group">
+                                <label class="font-weight-bold">Ingredienti:</label>
+                                <select multiple="multiple"
+                                        size="10"
+                                        class="form-control mb-2 mr-sm-2 ml-sm-3 leftList"
+                                        asp-items="Model.Ingredients">
+                                @foreach (Ingredient ingredient in Model.Ingredients)
+                                    {
+                                        <option value="@ingredient.Id">@ingredient.Name</option>
+                                    }
+                                </select>
+                            </div>
                                                     
                             @*{{-- Inserimento Immagini --}}*@
                             <div class="form-group">
