@@ -111,7 +111,7 @@ public class PizzaController : Controller
     {
         using (PizzaContext context = new PizzaContext())
         {
-            Pizza pizzaSelected = context.Pizzas.Where(pizza => pizza.PizzaId == id).FirstOrDefault();
+            Pizza pizzaSelected = context.Pizzas.Where(pizza => pizza.PizzaId == id).Include("Ingredients").FirstOrDefault();
             
             pizzaSelected.Name = formData.Pizza.Name;
             pizzaSelected.Description = formData.Pizza.Description;
@@ -119,7 +119,7 @@ public class PizzaController : Controller
             pizzaSelected.Price = formData.Pizza.Price;
             pizzaSelected.CategoryId = formData.Pizza.CategoryId;
             
-            pizzaSelected.Ingredients = context.Ingredients.Where(ingredient => formData.SelectedIngredients.Contains(ingredient.Id)).ToList();
+            pizzaSelected.Ingredients = context.Ingredients.Where(ingredient => formData.SelectedIngredients.Contains(ingredient.Id)).ToList<Ingredient>();
             
             context.Pizzas.Update(pizzaSelected);
           
