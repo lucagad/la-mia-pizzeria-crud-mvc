@@ -28,7 +28,7 @@ public class Pizza
     public int? CategoryId { get; set; }
     public Category? Category { get; set; }
     
-    public List<Ingredient> Ingredients { get; set; }
+    public List<Ingredient>? Ingredients { get; set; }
 
 
     public Pizza()

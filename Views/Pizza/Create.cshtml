@@ -74,12 +74,13 @@
                                 <select multiple="multiple"
                                         size="10"
                                         class="form-control mb-2 mr-sm-2 ml-sm-3 leftList"
-                                        asp-items="Model.Ingredients">
+                                        asp-for="SelectedIngredients">
                                 @foreach (Ingredient ingredient in Model.Ingredients)
                                     {
                                         <option value="@ingredient.Id">@ingredient.Name</option>
                                     }
                                 </select>
+                                <span asp-validation-for="Pizza.Ingredients" class="text-danger"></span>
                             </div>
                                                     
                             @*{{-- Inserimento Immagini --}}*@

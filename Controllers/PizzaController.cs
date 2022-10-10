@@ -23,6 +23,7 @@ public class PizzaController : Controller
         using (PizzaContext context = new PizzaContext())
         {
             Pizza pizzaFound = context.Pizzas.Where(pizza => pizza.PizzaId == id).Include(pizza => pizza.Category).FirstOrDefault();
+            
             if (pizzaFound == null)
             {
                 return NotFound($"La Pizza con id {id} non è stata trovata");
@@ -52,7 +53,7 @@ public class PizzaController : Controller
         {
             PizzasCategories pizzasCategories = new PizzasCategories();
             pizzasCategories.Categories = new PizzaContext().Categories.ToList();
-            
+            pizzasCategories.Ingredients = new PizzaContext().Ingredients.ToList();
             return View("Create", pizzasCategories);
         }
 
@@ -75,6 +76,7 @@ public class PizzaController : Controller
             pizzaToCreate.Price = formData.Pizza.Price;
             pizzaToCreate.CategoryId = formData.Pizza.CategoryId;
             
+            pizzaToCreate.Ingredients = context.Ingredients.Where(ingredient => formData.SelectedIngredients.Contains(ingredient.Id)).ToList<Ingredient>();
             context.Pizzas.Add(pizzaToCreate);
             context.SaveChanges();
 
