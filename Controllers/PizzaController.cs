@@ -40,6 +40,7 @@ public class PizzaController : Controller
         PizzasCategories pizzasCategories = new PizzasCategories();
         
         pizzasCategories.Categories = new PizzaContext().Categories.ToList();
+        pizzasCategories.Ingredients = new PizzaContext().Ingredients.ToList();
         return View("Create",pizzasCategories);
     }
 
