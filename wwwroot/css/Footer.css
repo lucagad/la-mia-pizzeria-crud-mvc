@@ -1,0 +1,15 @@
+
+.footer_personal {
+  background-color: #3a3a3a;
+  color: #db1f2c;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer_personal .logo_footer img {
+  width: 120px;
+}
+.footer_personal a {
+  color: #db1f2c;
+  text-decoration: none;
+}
