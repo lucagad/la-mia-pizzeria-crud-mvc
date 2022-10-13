@@ -2,18 +2,9 @@
 @import '../Styles/vars';
 @import '../Styles/mixins';
 
-
-header {
-    height: 60px;
-}
-
 main {
-    height: calc(100vh - 60px - 60px);
+    height: calc(100vh - 80px);
     overflow-y: auto;
-}
-
-footer {
-    height: 60px;
 }
 
 .card-custom{

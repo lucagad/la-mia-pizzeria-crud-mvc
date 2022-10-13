@@ -1,3 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap");
+body {
+  font-family: "Netflix Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #e8e279;
+}
+
+main {
+  height: calc(100vh - 80px);
+  overflow-y: auto;
+}
+
+.card-custom {
+  width: 18rem;
+  height: 100%;
+  flex-shrink: 1;
+}
+
+.table-img-custom {
+  height: 50px;
+  width: 50px;
+}
+
+.show-img-custom {
+  height: 150px;
+  width: 150px;
+}
 
 /*
 // BOTTONI CRUD

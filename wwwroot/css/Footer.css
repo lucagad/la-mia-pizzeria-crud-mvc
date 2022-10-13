@@ -1,15 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap");
+body {
+  font-family: "Netflix Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #e8e279;
+}
 
 .footer_personal {
-  background-color: #3a3a3a;
-  color: #db1f2c;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.footer_personal .logo_footer img {
-  width: 120px;
-}
-.footer_personal a {
-  color: #db1f2c;
-  text-decoration: none;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+  background-color: #fbae73;
+  color: #efefef;
 }
