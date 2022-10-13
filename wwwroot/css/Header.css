@@ -5,7 +5,7 @@ body {
 }
 
 header {
-  height: 80px;
+  height: 130px;
 }
 
 .navbar_personal {
@@ -17,7 +17,7 @@ header {
   align-items: center;
 }
 .navbar_personal .logo img {
-  width: 120px;
+  height: 80px;
 }
 .navbar_personal .navbar_select_container {
   flex-grow: 0;

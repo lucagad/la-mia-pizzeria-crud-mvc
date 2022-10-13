@@ -3,7 +3,7 @@
 @import '../Styles/mixins';
 
 header {
-    height: 80px;
+    height: 130px;
 }
 
 .navbar_personal{
@@ -14,7 +14,7 @@ header {
     @include flex-sbtw();
     .logo{
         img{
-            width: 120px;
+            height: 80px;
         }
     }
 

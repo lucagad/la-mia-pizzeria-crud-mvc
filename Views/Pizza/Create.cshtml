@@ -1,9 +1,16 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
     ViewData["Title"] = "Crea - ";
 }
 @model PizzasCategories;
 
-<div class="container">
+@* CONTROLLO ACCESSO EFFETTUATO *@
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="container">
     <div class="d-flex justify-content-center">
         <section class="col-md-10 ml-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-start flex-wrap align-items-center pt-3 pb-2 mb-3">
@@ -75,7 +82,7 @@
                                         size="10"
                                         class="form-control mb-2 mr-sm-2 ml-sm-3 leftList"
                                         asp-for="SelectedIngredients">
-                                @foreach (Ingredient ingredient in Model.Ingredients)
+                                    @foreach (Ingredient ingredient in Model.Ingredients)
                                     {
                                         <option value="@ingredient.Id">@ingredient.Name</option>
                                     }
@@ -103,3 +110,10 @@
         </section>
     </div>
 </div>
+
+}
+@* SE NEGATIVO MOSTRO ERRORE *@
+else
+{
+    @Html.Partial("../Shared/Partials/_ErrorAuth")
+}
