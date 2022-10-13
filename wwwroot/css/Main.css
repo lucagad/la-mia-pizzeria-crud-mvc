@@ -1,12 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap");
 body {
   font-family: "Netflix Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #e8e279;
+  background-color: #ffff9a;
+  height: 100vh;
 }
 
 main {
-  height: calc(100vh - 130px);
+  height: calc(100vh - 130px - 60px);
   overflow-y: auto;
+}
+
+.herobanner {
+  background-image: url("https://img.freepik.com/premium-photo/tasty-pepperoni-pizza-black-concrete-background_79782-103.jpg?w=2000");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.pizza_name,
+.text_alert {
+  color: #e32929;
 }
 
 .card-custom {
@@ -31,6 +44,12 @@ main {
 .btn_custom {
   background-color: #00D7C7;
   border-color: #00D7C7;
+  color: white;
+}
+
+.btn_custom_buy {
+  background-color: #e32929;
+  border-color: #e32929;
   color: white;
 }
 

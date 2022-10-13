@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap");
 body {
   font-family: "Netflix Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #e8e279;
+  background-color: #ffff9a;
+  height: 100vh;
 }
 
 header {
@@ -9,8 +10,8 @@ header {
 }
 
 .navbar_personal {
-  background-color: #fbae73;
-  color: #db1f2c;
+  background-color: #ff8550;
+  color: #e32929;
   padding: 20px;
   display: flex;
   justify-content: space-between;
@@ -28,7 +29,7 @@ header {
   box-shadow: #17cc1a 0 0 0 0.25rem;
 }
 .navbar_personal a {
-  color: #db1f2c;
+  color: #e32929;
   text-decoration: none;
   margin: 0 5px 0 5px;
 }

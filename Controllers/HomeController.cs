@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using la_mia_pizzeria_post.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace la_mia_pizzeria_post.Controllers;
 
@@ -15,7 +16,14 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        List<Pizza> pizzes;
+
+        using (PizzaContext db = new PizzaContext())
+        {
+            pizzes = db.Pizzas.Include("Category").ToList();
+        }
+        
+        return View("Index", pizzes);
     }
 
     public IActionResult Privacy()

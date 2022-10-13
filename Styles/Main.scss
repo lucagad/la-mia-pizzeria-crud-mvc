@@ -3,8 +3,20 @@
 @import '../Styles/mixins';
 
 main {
-    height: calc(100vh - 130px);
+    height: calc(100vh - 130px - 60px);
     overflow-y: auto;
+}
+
+.herobanner{
+    background-image: url("https://img.freepik.com/premium-photo/tasty-pepperoni-pizza-black-concrete-background_79782-103.jpg?w=2000");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.pizza_name,
+.text_alert{
+    color: $title-primary-color;
 }
 
 .card-custom{
@@ -31,6 +43,12 @@ main {
 .btn_custom{
     background-color: #00D7C7;
     border-color:#00D7C7;
+    color: white;
+}
+
+.btn_custom_buy{
+    background-color: $button-primary-color;
+    border-color: $button-primary-color;
     color: white;
 }
 
